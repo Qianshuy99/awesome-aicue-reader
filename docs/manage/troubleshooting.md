@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/20-troubleshooting-429.png"]
 ---
 
 # 故障排查
@@ -33,6 +33,8 @@ screenshots: []
 4. 打开请求数据面板，看是否有请求持续排队或反复失败。
 
 ## 遇到限流
+
+![请求数据面板中 429 限流状态与退避记录](/screenshots/20-troubleshooting-429.png)
 
 请求较密时站点会返回 429。阅读器的处理方式是记录该端点的限流状态并退避，随后用探测请求确认恢复，期间新请求排队等待。这段时间界面会变慢但不会报错退出。
 

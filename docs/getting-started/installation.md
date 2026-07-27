@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reader-entry.png"]
 ---
 
 # 安装与更新
@@ -28,7 +28,16 @@ screenshots: []
 1. 在浏览器中安装脚本管理器扩展，并确认扩展已启用。
 2. 打开仓库中的 [dist/awesome-aicue-reader.user.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/dist/awesome-aicue-reader.user.js)，选择 Raw 视图，脚本管理器会弹出安装确认。
 3. 在确认页面核对脚本名称为 `Awesome AICue Reader`、版本为 `0.1.13`，然后确认安装。
+
+![脚本管理器的安装确认页面](/screenshots/01-installation-confirm.png)
+
+<p class="image-caption">确认安装前核对脚本名称与版本号。</p>
+
 4. 打开 `https://www.aicue.top/`，刷新页面。脚本在 `document-start` 阶段注入，讨论列表加载后会出现阅读器入口按钮。
+
+![言灵工坊讨论列表上的阅读器入口按钮](/screenshots/02-reader-entry.png)
+
+<p class="image-caption">安装成功后，讨论列表的每个条目上会出现阅读器入口。</p>
 
 ## 匹配站点
 

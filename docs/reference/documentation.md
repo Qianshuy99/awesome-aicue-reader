@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/14-settings-overview.png"]
 ---
 
 # 文档维护规范
@@ -22,6 +22,8 @@ screenshots: []
 | `npm run docs:check` | 校验元数据、锚点与功能映射 |
 | `npm run docs:build` | 构建静态站点 |
 | `npm run docs:verify` | 先校验再构建，提交前跑这个 |
+
+![设置中心总览，手册按面板结构组织章节](/screenshots/14-settings-overview.png)
 
 ## 每页必须声明的元数据
 

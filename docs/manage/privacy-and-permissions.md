@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/19-privacy-request-flow.png"]
 ---
 
 # 隐私、权限与边界
@@ -23,6 +23,8 @@ screenshots: []
 | `@run-at document-start` | 在页面脚本前注入，避免样式闪烁与重复渲染 |
 
 ## 请求去向
+
+![请求数据面板中的请求去向、优先级与限流状态](/screenshots/19-privacy-request-flow.png)
 
 `@connect` 只声明三个域名：`aicue.top`、`www.aicue.top`、`flarum.aicue.top`。业务请求全部指向言灵工坊自身。
 

@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/21-compatibility.png"]
 ---
 
 # 兼容性
@@ -27,6 +27,8 @@ screenshots: []
 | 外部依赖 | KaTeX 0.16.22、pinyin-pro 3.18.2、hls.js 1.6.16 |
 
 域名判断在业务初始化之前执行，命中不到就直接退出，不会在其他站点注入任何 DOM 或样式。
+
+![言灵工坊上的楼层操作条，Discourse 插件入口不渲染](/screenshots/21-compatibility.png)
 
 ## 已关闭的 Discourse 专有能力
 

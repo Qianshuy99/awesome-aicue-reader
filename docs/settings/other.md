@@ -7,12 +7,14 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/17-other-features.png"]
 ---
 
 # 其他功能
 
 这一面板集中放历史导航、帖子打开方式和回复展示三类偏好，修改后自动保存在当前浏览器。
+
+![其他功能面板](/screenshots/17-other-features.png)
 
 ## 历史导航
 

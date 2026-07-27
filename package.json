@@ -8,8 +8,9 @@
   },
   "scripts": {
     "userscript:build": "node scripts/build-userscript.mjs",
-    "docs:dev": "vitepress dev docs --host 127.0.0.1",
-    "docs:build": "vitepress build docs",
+    "docs:assets": "node scripts/sync-doc-assets.mjs",
+    "docs:dev": "npm run docs:assets && vitepress dev docs --host 127.0.0.1",
+    "docs:build": "npm run docs:assets && vitepress build docs",
     "docs:preview": "vitepress preview docs --host 127.0.0.1",
     "docs:check": "node scripts/validate-docs.mjs",
     "docs:verify": "npm run docs:check && npm run docs:build"

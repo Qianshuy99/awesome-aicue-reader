@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/22-feature-catalog.png"]
 ---
 
 # 功能覆盖目录
@@ -15,6 +15,8 @@ screenshots: []
 完整数据在 [feature-catalog.json](/feature-catalog.json)，每条记录包含功能 ID、分类、源码锚点、起始版本、验证日期和对应文档。`npm run docs:check` 会校验锚点在 [work/main.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/work/main.js) 中真实存在，以及功能与文档的双向映射一致。
 
 当前收录 33 项功能，分 10 个分类。
+
+![关于面板显示当前运行的脚本版本](/screenshots/22-feature-catalog.png)
 
 ## 分类构成
 

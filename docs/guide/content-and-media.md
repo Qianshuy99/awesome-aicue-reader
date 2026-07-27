@@ -7,12 +7,16 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/10-lightbox.png", "/screenshots/11-batch-download.png"]
 ---
 
 # 图片、媒体与富内容
 
 ## 图片灯箱
+
+![打开状态的图片灯箱与工具条](/screenshots/10-lightbox.png)
+
+<p class="image-caption">灯箱支持缩放、平移与切换，工具条提供跳到楼层、批量下载与原图。</p>
 
 点击正文图片进入灯箱，可缩放、平移、切换上一张下一张。灯箱工具条还提供：
 
@@ -23,6 +27,10 @@ screenshots: []
 帖内图片的显示比例、是否统一裁切等行为在图片设置中调整，作用范围是整个阅读器。
 
 ## 批量下载
+
+![批量下载对话框的范围选择与进度](/screenshots/11-batch-download.png)
+
+<p class="image-caption">选择下载范围后逐张下载，进度条显示已完成数量。</p>
 
 批量下载对话框可选择范围（当前楼层、当前帖等），逐张下载并显示进度条。下载走浏览器自身的下载通道，文件不经过任何第三方服务。图片较多时受站点限流影响，进度可能变慢，对话框会保留已完成的数量。
 

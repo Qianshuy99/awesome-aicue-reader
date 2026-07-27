@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/04-quick-start-reply.png", "/screenshots/09-nested-context.png"]
 ---
 
 # 回复与社区操作
@@ -15,6 +15,10 @@ screenshots: []
 所有互动都调用言灵工坊自身接口。阅读器不代持凭据，写操作使用宿主启动载荷中的会话与 CSRF token，结果与在原站操作完全一致。
 
 ## 回复
+
+![楼层操作条上的回复框与自动插入的提及标记](/screenshots/04-quick-start-reply.png)
+
+<p class="image-caption">回复框由阅读器发起、由原站提交，开头的提及标记决定这条回复归属哪个楼层。</p>
 
 楼层操作条上的回复按钮打开回复框。回复某个楼层时，阅读器会自动插入对该楼层作者的提及标记。
 
@@ -38,6 +42,10 @@ screenshots: []
 选中正文文本后会浮出操作条，提供复制。复制得到的是纯文本，不带阅读器自身的标记。
 
 ## Flarum 上不存在的能力
+
+![楼中楼展开后的楼层上下文](/screenshots/09-nested-context.png)
+
+<p class="image-caption">楼层关系由提及标记推断，展开后可就地查看被回复的楼层。</p>
 
 脚本保留了上游的能力检测层，本站点适配器把以下能力全部标记为关闭：
 

@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/14-settings-overview.png", "/screenshots/15-performance-settings.png"]
 ---
 
 # 设置中心总览
@@ -15,6 +15,8 @@ screenshots: []
 设置入口在工作区顶部。所有设置随改随存，保存在当前浏览器的脚本存储中，不上传。
 
 ## 面板一览
+
+![设置中心的面板导航](/screenshots/14-settings-overview.png)
 
 | 面板 | 职责 |
 | --- | --- |
@@ -33,6 +35,8 @@ screenshots: []
 | 关于 | 版本、项目链接与致谢 |
 
 ## 性能设置的三层关系
+
+![性能设置面板](/screenshots/15-performance-settings.png)
 
 性能设置按“先需求、后调度”组织，理解这个顺序才能有效调参：
 

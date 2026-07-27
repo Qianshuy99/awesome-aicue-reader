@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/05-reading-modes.png", "/screenshots/06-workspace-regions.png"]
 ---
 
 # 阅读模式与工作区
@@ -21,11 +21,19 @@ screenshots: []
 | 左嵌入 `embed-left` | 列表在右、正文在左 | 仅列表页 |
 | 右嵌入 `embed-right` | 列表在左、正文在右 | 仅列表页 |
 
+![工作区顶部的显示形态切换控件](/screenshots/05-reading-modes.png)
+
+<p class="image-caption">在工作区顶部切换四种显示形态，切换后阅读位置保持不变。</p>
+
 列表页四种形态都可用；直接打开讨论详情页时只有浮窗和全屏，因为嵌入形态需要宿主列表作为另一栏。
 
 浮窗的长宽与左上角坐标保存在设置中，拖动或缩放后自动同步。在其他形态下修改浮窗尺寸，会在切回浮窗后生效。
 
 ## 工作区结构
+
+![阅读器工作区的五个区域分布](/screenshots/06-workspace-regions.png)
+
+<p class="image-caption">五区结构：顶部工具条、正文流、右侧时间轴、底部操作条与按需出现的侧栏。</p>
 
 工作区分为五个区域：顶部工具条、正文流、右侧时间轴、底部操作条，以及按需出现的侧栏（通知、历史、收藏等）。五区比例在布局设置中统一配置，四种形态共用同一套比例，元素再按容器实际宽度重排，因此窄浮窗和全屏下的排布会不同。
 

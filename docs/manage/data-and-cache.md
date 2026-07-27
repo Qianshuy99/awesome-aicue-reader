@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/18-cache-cleanup.png"]
 ---
 
 # 数据、配置与缓存
@@ -33,6 +33,8 @@ screenshots: []
 缓存不参与导出。它是可重建的派生数据，换设备时无需迁移。
 
 ## 清理的影响范围
+
+![数据管理面板中按类型列出的缓存与清理入口](/screenshots/18-cache-cleanup.png)
 
 清理缓存只删除当前浏览器里的阅读器数据。以下内容不受影响：
 

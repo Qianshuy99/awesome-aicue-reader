@@ -7,7 +7,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/12-notifications.png", "/screenshots/13-messages.png"]
 ---
 
 # 消息、历史与收藏
@@ -15,6 +15,10 @@ screenshots: []
 侧栏集中放置与账号相关的列表，打开侧栏不会丢失当前阅读位置。
 
 ## 通知分组
+
+![通知侧栏的分组视图](/screenshots/12-notifications.png)
+
+<p class="image-caption">通知按回复、点赞、私信等类型分组，点击直接在阅读器中打开对应楼层。</p>
 
 通知按类型分组展示：
 
@@ -29,6 +33,10 @@ screenshots: []
 分组定义沿用上游，其中依赖 Discourse 插件的类型（Boost、关注等）在言灵工坊不会有数据，对应分组为空或不显示。点击通知直接在阅读器中打开对应楼层。
 
 ## 私信
+
+![私信会话列表](/screenshots/13-messages.png)
+
+<p class="image-caption">私信列表显示会话与未读状态，清理缓存不影响原站记录。</p>
 
 私信入口列出会话与未读状态，内容与原站一致。阅读器不缓存私信正文明文以外的额外副本，清理缓存不会影响原站的私信记录。
 

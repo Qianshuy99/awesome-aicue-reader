@@ -7,12 +7,14 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/16-data-management.png", "/screenshots/18-cache-cleanup.png"]
 ---
 
 # 数据管理
 
 ## 导出设置
+
+![数据管理面板](/screenshots/16-data-management.png)
 
 导出会把当前所有阅读器设置写成一个 JSON 文件并下载到本地。文件内容是偏好项，不含账号凭据、私信内容或帖子正文。
 
@@ -29,6 +31,8 @@ screenshots: []
 重置会把所有设置恢复到默认值。这个操作不可撤销，执行前建议先导出。重置只影响设置，不清理缓存。
 
 ## 清理缓存
+
+![按类型清理缓存](/screenshots/18-cache-cleanup.png)
 
 缓存按类型列出，每类显示占用体积。勾选需要清理的类型后执行清理，未勾选的类型不受影响。
 

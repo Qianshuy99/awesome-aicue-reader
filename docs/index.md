@@ -8,7 +8,7 @@ since: 0.1.13
 version: 0.1.13
 status: current
 last_verified: 2026-07-27
-screenshots: []
+screenshots: ["/screenshots/03-quick-start-workspace.png"]
 
 hero:
   name: Awesome AICue Reader
@@ -42,6 +42,10 @@ features:
 
 ## 手册覆盖范围
 
+![阅读器工作区在言灵工坊讨论页中打开](/screenshots/03-quick-start-workspace.png)
+
+<p class="image-caption">阅读工作区在当前页面内打开，宿主列表保持原样。</p>
+
 这套手册对应 userscript `0.1.13`，以 [work/main.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/work/main.js) 当前源码为事实源。脚本只服务言灵工坊一个站点：`aicue.top`、`www.aicue.top`、`flarum.aicue.top`。宿主不是这三个域名时，脚本在业务初始化前直接退出。
 
 本项目从上游 [sunbigfly / awesome-linuxdo-reader](https://github.com/sunbigfly/awesome-linuxdo-reader) 移植而来，宿主平台由 Discourse 换成 Flarum。上游手册中关于多站点适配、自定义站点校验和正文翻译的章节不适用于本项目，已从本手册移除。
@@ -57,6 +61,6 @@ features:
 3. Flarum 没有 Discourse 的 Boost、Reactions、Post Voting、Connect 等插件能力，相关入口一律隐藏，不会出现在界面上。
 4. 言灵工坊正文为中文，正文翻译默认关闭，脚本不会向第三方翻译接口发送内容。
 
-## 尚未补齐的部分
+## 关于配图
 
-本手册目前不含界面截图。上游的 39 张截图都是 LINUX DO 的 Discourse 界面，与言灵工坊不符，需要在 aicue.top 上重新拍摄后补入。详见[文档维护规范](/reference/documentation)。
+手册配图拍自 aicue.top 实际界面，登记在各页 `screenshots` 字段中，由 `npm run docs:check` 校验存在性与登记一致性。上游的 39 张 Discourse 截图未被沿用。细粒度的单面板设置说明仍在补齐中，详见[文档维护规范](/reference/documentation)。
