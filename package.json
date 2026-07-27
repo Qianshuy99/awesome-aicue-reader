@@ -1,0 +1,24 @@
+{
+  "name": "awesome-aicue-reader",
+  "version": "0.1.13",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "userscript:build": "node scripts/build-userscript.mjs",
+    "docs:dev": "vitepress dev docs --host 127.0.0.1",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 127.0.0.1",
+    "docs:check": "node scripts/validate-docs.mjs",
+    "docs:verify": "npm run docs:check && npm run docs:build"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "vitepress": "1.6.4"
+  },
+  "overrides": {
+    "vite": "6.4.3"
+  }
+}

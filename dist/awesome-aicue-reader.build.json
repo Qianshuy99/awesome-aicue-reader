@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "work/main.js",
+    "bytes": 1697202,
+    "sha256": "91a5718c32b785602da9809767405528a4a531d45ddf42abb79992e4feb29c14"
+  },
+  "metadata": {
+    "bytes": 1618,
+    "sha256": "6f779b7124dd7ecbf2fde6e177563d1a7d1e1c8a744a533cfb2431be0b1be70e"
+  },
+  "artifact": {
+    "path": "dist/awesome-aicue-reader.user.js",
+    "bytes": 889767,
+    "gzipBytes": 301319,
+    "sha256": "6ee1cc0563b280c60049cfc33bb8c93921a8c322748d229606784fd7e0e11449"
+  },
+  "compiler": {
+    "name": "esbuild",
+    "version": "0.25.12",
+    "options": {
+      "charset": "utf8",
+      "keepNames": false,
+      "legalComments": "none",
+      "minify": true,
+      "sourcefile": "work/main.js",
+      "target": "es2022",
+      "treeShaking": false
+    }
+  },
+  "limits": {
+    "artifactBytes": 950000,
+    "gzipBytes": 400000
+  }
+}
