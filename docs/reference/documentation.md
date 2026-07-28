@@ -40,13 +40,18 @@ screenshots: ["/screenshots/14-settings-overview.png"]
 
 页面、VitePress 配置、主题文件和功能目录都不允许出现 Emoji，校验会拦。需要图标时用带 `aria-hidden="true"` 的 Lucide SVG，许可信息见 `docs/public/third-party-licenses/lucide.txt`。
 
-## 截图规则当前是暂缓状态
+## 截图规则
 
-上游校验强制每页至少一张正文配图、指南页按章节数配图、图片必须紧跟 `<p class="image-caption">` 说明。这些规则在本仓库仍然写在 [scripts/validate-docs.mjs](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/scripts/validate-docs.mjs) 里，但用 `hasScreenshotAssets` 开关暂时旁路了，因为上游 39 张截图全部拍自 LINUX DO 的 Discourse 界面，放进言灵工坊的手册会误导读者。
+上游的 39 张截图全部拍自 LINUX DO 的 Discourse 界面，没有沿用。现在 `assets/screenshots/` 下是 22 张 aicue.top 实拍图，[scripts/validate-docs.mjs](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/scripts/validate-docs.mjs) 里由 `hasScreenshotAssets` 控制的四条规则因此全部生效：
 
-补齐流程：在 aicue.top 实拍截图，放入仓库根目录的 `assets/screenshots/`，在页面 `screenshots` 数组和功能目录里登记，正文用图片语法引用（`![描述]` 紧接 `(/screenshots/文件名.png)`）并在下一行写图注。`assets/screenshots/` 目录一旦存在，四条强制规则自动恢复，无需改代码。
+- 每页至少一张正文配图。
+- 指南页按二级章节数配图，`max(2, ceil(章节数 / 3))` 张。
+- 正文图片必须登记在页面 `screenshots` 数组里。
+- 图片下方三行内必须有 `<p class="image-caption">` 图注。
 
-已登记的图片引用现在就会校验存在性，所以不要提前写入还没拍的文件名。
+新增配图：在 aicue.top 实拍，放入仓库根目录的 `assets/screenshots/`，在页面 `screenshots` 数组里登记，正文用图片语法引用并在下一行写图注。`docs/public/screenshots/` 是 `npm run docs:assets` 从 `assets/` 同步出来的派生产物，已被 gitignore，不要直接往那里放文件。
+
+图片引用会校验存在性，不要写入还没拍的文件名。给指南页加二级章节时留意配图门槛：章节数跨过 3 的倍数就要补图。
 
 ## 与上游文档的关系
 

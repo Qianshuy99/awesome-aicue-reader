@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 const repository = 'awesome-aicue-reader'
 const base = process.env.DOCS_BASE || `/${repository}/`
 const repositoryUrl = `https://github.com/Qianshuy99/${repository}`
+const installUrl = `${repositoryUrl}/raw/main/dist/${repository}.user.js`
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -28,6 +29,7 @@ export default defineConfig({
       { text: '使用指南', link: '/guide/reading-modes' },
       { text: '设置', link: '/settings/overview' },
       { text: '维护与排障', link: '/manage/data-and-cache' },
+      { text: '安装脚本', link: installUrl },
       {
         text: 'v0.1.13',
         items: [

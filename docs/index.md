@@ -33,7 +33,7 @@ features:
   - title: 原站互动
     details: 回复、点赞、收藏、通知沿用言灵工坊自身接口，结果与原站一致。
   - title: 富内容呈现
-    details: 图片灯箱与批量下载、音视频与 HLS、KaTeX 公式、投票和代码块。
+    details: 图片灯箱与批量下载、音视频与 HLS、KaTeX 公式与代码块。
   - title: 个性化设置
     details: 13 个设置面板覆盖图片、字体、五区布局、浮窗、外观、动效与性能。
   - title: 有界资源治理
@@ -53,6 +53,17 @@ features:
 ::: tip 推荐路径
 第一次使用按“安装与更新 → 五分钟上手”阅读。遇到加载、图片或限流问题，直接进入[故障排查](/manage/troubleshooting)。
 :::
+
+## 直达入口
+
+| 入口 | 链接 |
+| --- | --- |
+| 安装脚本 | [awesome-aicue-reader.user.js](https://github.com/Qianshuy99/awesome-aicue-reader/raw/main/dist/awesome-aicue-reader.user.js) |
+| 代码仓库 | [github.com/Qianshuy99/awesome-aicue-reader](https://github.com/Qianshuy99/awesome-aicue-reader) |
+| 反馈问题 | [GitHub Issues](https://github.com/Qianshuy99/awesome-aicue-reader/issues) |
+| 目标站点 | [言灵工坊](https://www.aicue.top/) |
+
+安装链接是脚本管理器可直接识别的 Raw 地址，点开会弹出安装确认。装好后需要刷新一次言灵工坊页面。
 
 ## 先了解四个边界
 
