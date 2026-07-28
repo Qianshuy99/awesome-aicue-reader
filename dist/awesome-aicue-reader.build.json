@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "source": {
     "path": "work/main.js",
-    "bytes": 1697202,
-    "sha256": "91a5718c32b785602da9809767405528a4a531d45ddf42abb79992e4feb29c14"
+    "bytes": 1698787,
+    "sha256": "7f9de73ed4211211174aebedbb41b68e4dc229b0aa0f5731a6c95aa084240c61"
   },
   "metadata": {
-    "bytes": 1618,
-    "sha256": "6f779b7124dd7ecbf2fde6e177563d1a7d1e1c8a744a533cfb2431be0b1be70e"
+    "bytes": 1621,
+    "sha256": "321ab51b7a1e54fc18650b95f19ff2923db311aca0a3157251252a770add2334"
   },
   "artifact": {
     "path": "dist/awesome-aicue-reader.user.js",
-    "bytes": 889767,
-    "gzipBytes": 301319,
-    "sha256": "6ee1cc0563b280c60049cfc33bb8c93921a8c322748d229606784fd7e0e11449"
+    "bytes": 890089,
+    "gzipBytes": 301427,
+    "sha256": "af87b607e3d816301cc2f8741a129e42492f15873ab21b6529c2a30ba1721a19"
   },
   "compiler": {
     "name": "esbuild",

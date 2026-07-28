@@ -8908,13 +8908,21 @@
 	}
 
 	// 点赞：PATCH /api/posts/:id { attributes: { isLiked } }
+	// 写入用 isLiked，但响应里没有这个属性，只有 likesCount 和 likes 关系，
+	// 因此结果状态从 likes 关系推断；关系缺失时退回本次请求的目标值。
 	async function flarumTogglePostLike(postId, liked) {
-		const payload = await flarumApiWrite(`/posts/${encodeURIComponent(postId)}`, 'PATCH', {
+		const payload = await flarumApiWrite(`/posts/${encodeURIComponent(postId)}?include=likes`, 'PATCH', {
 			data: { type: 'posts', id: String(postId), attributes: { isLiked: liked === true } },
 		});
-		const attributes = payload?.data?.attributes || {};
+		const post = payload?.data;
+		const attributes = post?.attributes || {};
+		const likeRefs = post?.relationships?.likes?.data;
+		const currentUserId = Number(FLARUM_SESSION.userId) || 0;
+		const acted = Array.isArray(likeRefs) && currentUserId
+			? likeRefs.some((ref) => Number(ref?.id) === currentUserId)
+			: liked === true;
 		return {
-			acted: attributes.isLiked === true,
+			acted,
 			count: Math.max(0, Number(attributes.likesCount) || 0),
 		};
 	}
@@ -9041,6 +9049,23 @@
 		return refs.map((ref) => index.get(`${ref.type}:${ref.id}`)).filter(Boolean);
 	}
 
+	// Flarum 的点赞没有 Discourse 的 actions_summary，也没有 isLiked 属性：
+	// 「能否点赞」在 attributes.canLike，「是否已点赞」要看 likes 关系里有没有当前用户。
+	// 楼层渲染与点赞按钮都只认 actions_summary 里 id === 2 的那条，所以在映射层补齐。
+	// likes 未被 include 时关系缺失，此时只能按未点赞处理（读端点都带上了 likes）。
+	function flarumLikeActionsSummary(post, index, attributes) {
+		const likeRefs = post?.relationships?.likes?.data;
+		const currentUserId = Number(FLARUM_SESSION.userId) || 0;
+		const acted = !!(currentUserId && Array.isArray(likeRefs) &&
+			likeRefs.some((ref) => Number(ref?.id) === currentUserId));
+		return [{
+			id: 2,
+			count: Math.max(0, Number(attributes?.likesCount) || 0),
+			acted,
+			can_act: attributes?.canLike === true,
+		}];
+	}
+
 	// Flarum 头像是完整 URL；Discourse 侧是带 {size} 占位符的模板。
 	// 直接返回 URL，avatarUrl() 会原样透传。
 	function flarumAvatarTemplate(user) {
@@ -9102,6 +9127,7 @@
 			can_edit: attributes.canEdit === true,
 			can_delete: attributes.canDelete === true,
 			can_like: attributes.canLike === true,
+			actions_summary: flarumLikeActionsSummary(post, index, attributes),
 			yours: !!(context.currentUsername && discourseUser?.username === context.currentUsername),
 			read: true,
 			topic_slug: context.slug || '',
@@ -9164,7 +9190,7 @@
 	// /t/:id.json -> /api/discussions/:id?include=posts,...
 	async function flarumFetchTopic(topicId, signal) {
 		const payload = await flarumApiGet(
-			`/discussions/${encodeURIComponent(topicId)}?include=posts,posts.user,posts.mentionedBy,user,tags,firstPost`,
+			`/discussions/${encodeURIComponent(topicId)}?include=posts,posts.user,posts.mentionedBy,posts.likes,user,tags,firstPost`,
 			signal
 		);
 		const index = flarumIncludeIndex(payload);
@@ -9228,7 +9254,7 @@
 	async function flarumFetchPostsByIds(topicId, ids, signal) {
 		if (!ids.length) return { post_stream: { posts: [] } };
 		const payload = await flarumApiGet(
-			`/posts?filter[id]=${ids.map((id) => encodeURIComponent(id)).join(',')}&include=user,mentionedBy`,
+			`/posts?filter[id]=${ids.map((id) => encodeURIComponent(id)).join(',')}&include=user,mentionedBy,likes`,
 			signal
 		);
 		const index = flarumIncludeIndex(payload);
@@ -9248,7 +9274,7 @@
 
 	async function flarumFetchPost(postId, signal) {
 		const payload = await flarumApiGet(
-			`/posts/${encodeURIComponent(postId)}?include=user,discussion,mentionedBy`, signal
+			`/posts/${encodeURIComponent(postId)}?include=user,discussion,mentionedBy,likes`, signal
 		);
 		const index = flarumIncludeIndex(payload);
 		const post = payload?.data;
@@ -9284,7 +9310,7 @@
 	async function flarumFetchPostByNumber(topicId, postNumber, signal) {
 		const payload = await flarumApiGet(
 			`/posts?filter[discussion]=${encodeURIComponent(topicId)}` +
-			`&filter[number]=${encodeURIComponent(postNumber)}&include=user,mentionedBy`,
+			`&filter[number]=${encodeURIComponent(postNumber)}&include=user,mentionedBy,likes`,
 			signal
 		);
 		const index = flarumIncludeIndex(payload);
@@ -24868,9 +24894,12 @@
 			if (busy) return;
 			status.classList.remove('success');
 			status.textContent = '';
+			// setBusy() 会禁用所有控件，而 FormData 按规范会跳过 disabled 控件，
+			// 因此必须在禁用之前取快照，否则提交时拿到的字段全是空值。
+			const formData = new FormData(form);
 			setBusy(true);
 			try {
-				const successMessage = await options.onSubmit(new FormData(form));
+				const successMessage = await options.onSubmit(formData);
 				status.classList.add('success');
 				status.textContent = successMessage || '操作已完成';
 				closeTimer = setTimeout(close, 650);
