@@ -74,7 +74,13 @@
 
 ## 致谢
 
-项目移植自 [sunbigfly/awesome-linuxdo-reader](https://github.com/sunbigfly/awesome-linuxdo-reader)，并将宿主平台从 Discourse 适配为 Flarum。感谢 [言灵工坊](https://www.aicue.top/)、[Flarum](https://flarum.org/)、[VitePress](https://vitepress.dev/)、[Lucide](https://lucide.dev/)、[KaTeX](https://katex.org/)、[hls.js](https://github.com/video-dev/hls.js) 与 [pinyin-pro](https://github.com/zh-lx/pinyin-pro)。
+这个项目并不是从空白开始的。它站在已有开源实现、稳定的社区平台与一组可靠工具之上；这里逐一说明这些帮助在项目中留下的具体痕迹。
+
+- [sunbigfly/awesome-linuxdo-reader](https://github.com/sunbigfly/awesome-linuxdo-reader) 是本项目的上游基础。阅读工作区、五区布局、有界渲染窗口、请求优先级调度等关键设计都来自这份完整的 MIT 开源实现。本项目在此基础上完成了从 Discourse 到 Flarum 的宿主适配：重建会话与数据映射、按 Flarum 能力收敛界面，并以原站 JSON:API 替换原有交互路径。
+- [言灵工坊](https://www.aicue.top/) 是阅读器服务的社区与真实使用场景。项目只在其三个官方域名启动，登录、权限、内容与互动结果均由原站决定；每一张手册截图和每一项兼容性取舍也都以这里的实际界面为准。
+- [Flarum](https://flarum.org/) 提供了清晰的 JSON:API 与前端运行态，使阅读器能在不接管账号体系的前提下读取讨论、提交回复，并把结果回写到原站体验中。
+- [VitePress](https://vitepress.dev/) 承载用户手册；文档通过源码锚点、功能目录和截图校验与实现保持同步。图标来自 [Lucide](https://lucide.dev/)，公式、流媒体和中文排序能力分别依赖 [KaTeX](https://katex.org/)、[hls.js](https://github.com/video-dev/hls.js) 与 [pinyin-pro](https://github.com/zh-lx/pinyin-pro)。
+- 感谢「[林夕」公益站](https://k40.shengqainbang.cn/keys) 维护面向学习交流的公益技术服务，并提供 API 密钥管理入口。该链接作为资源鸣谢保留在此；Awesome AICue Reader 不会访问该站，也不要求或收集用户的 API 密钥。
 
 ## 许可
 
