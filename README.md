@@ -16,19 +16,33 @@
 | --- | --- | --- | --- |
 | 浮窗、全屏、左右嵌入 | 时间轴、只看楼主、阅读历史 | 回复、点赞、收藏、通知 | 图片灯箱、批量下载、音视频、公式与代码 |
 
-它为 Flarum 形态的言灵工坊适配，而不是另起一个论坛客户端。账号、权限、帖子与互动结果始终以原站为准。
+它不是另一个论坛客户端，而是为 Flarum 形态的言灵工坊深度适配。账号、权限、帖子与互动结果始终以原站为准。
 
 ## 开始使用
 
-**需要：** Chromium 或 Firefox 桌面浏览器，以及 Tampermonkey、Violentmonkey 等支持 `GM_xmlhttpRequest` 的脚本管理器。
+**前置条件：** Chromium 或 Firefox 桌面浏览器 + Tampermonkey / Violentmonkey 等支持 `GM_xmlhttpRequest` 的脚本管理器。
 
-1. 安装并启用脚本管理器。
-2. 点击 [安装 Awesome AICue Reader](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)，在扩展弹窗中确认安装。
-3. 打开或刷新 [言灵工坊](https://www.aicue.top/)，从讨论列表中的阅读器入口进入。
+1. 安装并启用脚本管理器
+2. 点击 [安装 Awesome AICue Reader](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)，在扩展弹窗中确认安装
+3. 打开或刷新 [言灵工坊](https://www.aicue.top/)，从讨论列表中的阅读器入口进入
 
-当前版本：`0.1.14`。脚本已配置自动更新地址；安装这一版后，脚本管理器会按自身的检查策略发现并安装后续版本。详细的浏览器兼容性、权限与更新说明见[安装与更新](docs/getting-started/installation.md)。
+当前版本：`0.1.14`。脚本已配置自动更新地址，安装后脚本管理器会按自身策略发现并安装后续版本。详见[安装与更新](docs/getting-started/installation.md)。
 
 ![讨论列表中的阅读器入口](assets/screenshots/02-reader-entry.png)
+
+## 文档与开发
+
+用户手册：<https://qianshuy99.github.io/awesome-aicue-reader/>
+
+| 命令 | 作用 |
+| --- | --- |
+| `npm install` | 安装开发依赖，需要 Node.js 20+ |
+| `npm run userscript:build` | 从 `work/main.js` 构建可安装的 `dist/` 脚本 |
+| `npm run docs:dev` | 本地启动 VitePress 手册 |
+| `npm run docs:check` | 校验文档、源码锚点、功能目录和截图 |
+| `npm run docs:verify` | 校验并构建手册，适合提交前运行 |
+
+目录保持简单：`work/` 放源码，`dist/` 放发布产物，`docs/` 放 VitePress 手册，`scripts/` 放构建与校验工具。文档以 [work/main.js](work/main.js) 为事实源，并通过自动校验阻止描述与实现漂移。
 
 ## 为长帖而设
 
@@ -57,20 +71,6 @@
 脚本仅匹配 `aicue.top`、`www.aicue.top` 与 `flarum.aicue.top`。其他网站会在初始化前退出，不注入界面，也不请求数据。
 
 业务请求只面向言灵工坊自身域名。KaTeX、pinyin-pro、hls.js 与样式表作为静态依赖从 jsDelivr 加载；脚本不包含分析、埋点或第三方翻译请求。完整说明见[隐私、权限与边界](docs/manage/privacy-and-permissions.md)和[兼容性](docs/reference/compatibility.md)。
-
-## 文档与开发
-
-用户手册：<https://qianshuy99.github.io/awesome-aicue-reader/>
-
-| 命令 | 作用 |
-| --- | --- |
-| `npm install` | 安装开发依赖，需要 Node.js 20+ |
-| `npm run userscript:build` | 从 `work/main.js` 构建可安装的 `dist/` 脚本 |
-| `npm run docs:dev` | 本地启动 VitePress 手册 |
-| `npm run docs:check` | 校验文档、源码锚点、功能目录和截图 |
-| `npm run docs:verify` | 校验并构建手册，适合提交前运行 |
-
-目录保持简单：`work/` 放源码，`dist/` 放发布产物，`docs/` 放 VitePress 手册，`scripts/` 放构建与校验工具。文档以 [work/main.js](work/main.js) 为事实源，并通过自动校验阻止描述与实现漂移。
 
 ## 致谢
 
