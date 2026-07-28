@@ -2,13 +2,15 @@
 // @name         Awesome AICue Reader
 // @name:zh-CN   更流畅的言灵工坊阅读器
 // @namespace    https://github.com/Qianshuy99/awesome-aicue-reader
-// @version      0.1.13
+// @version      0.1.14
 // @license      MIT
 // @description  为言灵工坊（Flarum）深度适配的沉浸式增强阅读器，支持长帖上下文、原站互动与个性布局。
 // @description:en An immersive reader deeply adapted for AICue (Flarum), with threaded reading, native interactions, and personalized layouts.
 // @author       sunbigfly
 // @homepageURL  https://github.com/Qianshuy99/awesome-aicue-reader
 // @supportURL   https://github.com/Qianshuy99/awesome-aicue-reader/issues
+// @updateURL    https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js
+// @downloadURL  https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js
 // @match        https://www.aicue.top/*
 // @match        https://aicue.top/*
 // @match        https://flarum.aicue.top/*
@@ -39,7 +41,7 @@
 	const BASE = location.origin;
 	const PAGE_ROOT = document.documentElement;
 	const makeElement = (tagName) => document.createElement(tagName);
-	const READER_VERSION = '0.1.13';
+	const READER_VERSION = '0.1.14';
 	const HOST_PAGE_WINDOW = globalThis.unsafeWindow;
 	// ---- 言灵工坊（Flarum）站点适配 ----
 	// aicue.top 运行 Flarum，而非 Discourse。阅读器全部 UI/渲染逻辑都基于 Discourse 的
@@ -16461,8 +16463,6 @@
 			: collectLightboxItems(clickedImg, ctx);
 		const { items, initialIndex } = imageSet;
 		if (!items.length) return;
-		const siteSettings = lookupDiscourse('service:site-settings');
-		const minimumCommentLength = Math.max(1, +(siteSettings?.min_post_length) || 16);
 		const lb = makeElement('div');
 		const lightboxScope = createLifecycleScope();
 		lb.className = 'ldp-lightbox';
@@ -16507,7 +16507,7 @@
             </div>
             <form class="ldp-lb-comment-form" hidden>
               <div class="ldp-lb-comment-target"></div>
-              <textarea class="ldp-lb-comment-input" maxlength="32000" placeholder="写下你的评论（至少 ${minimumCommentLength} 个字符）…" required></textarea>
+              <textarea class="ldp-lb-comment-input" maxlength="32000" placeholder="写下你的评论…" required></textarea>
               <label class="ldp-lb-comment-image-option"><input type="checkbox">同时引用当前图片</label>
               <div class="ldp-lb-comment-error" role="alert"></div>
               <div class="ldp-lb-comment-actions"><button class="ldp-lb-comment-cancel" type="button">取消</button><button class="ldp-lb-comment-submit" type="submit">发送</button></div>
@@ -17197,15 +17197,10 @@
 			const targetPost = commentTargetPost;
 			const targetPostNumber = +(targetPost?.post_number || 0);
 			const message = String(commentInput.value || '').trim();
-			const messageLength = [...message].length;
 			const includeImage = commentForm.dataset.rootComment === '1' || commentImageCheckbox.checked;
 			const quoteRaw = includeImage ? lightboxImageQuoteRaw(item, ctx) : '';
 			if (!message || !targetPostNumber || includeImage && !quoteRaw) {
 				commentError.textContent = !message ? '请输入评论内容' : '无法确认图片引用来源';
-				return;
-			}
-			if (messageLength < minimumCommentLength) {
-				commentError.textContent = `评论至少需要 ${minimumCommentLength} 个字符（当前 ${messageLength} 个）`;
 				return;
 			}
 			commentForm.setAttribute('aria-busy', 'true');
