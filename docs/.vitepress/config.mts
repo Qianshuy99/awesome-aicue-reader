@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 const repository = 'awesome-aicue-reader'
 const base = process.env.DOCS_BASE || `/${repository}/`
 const repositoryUrl = `https://github.com/Qianshuy99/${repository}`
-const installUrl = `${repositoryUrl}/raw/main/dist/${repository}.user.js`
+const installUrl = `https://cdn.jsdelivr.net/gh/Qianshuy99/${repository}@main/dist/${repository}.user.js`
 
 export default defineConfig({
   lang: 'zh-CN',

@@ -58,7 +58,7 @@ features:
 
 | 入口 | 链接 |
 | --- | --- |
-| 安装脚本 | [awesome-aicue-reader.user.js](https://github.com/Qianshuy99/awesome-aicue-reader/raw/main/dist/awesome-aicue-reader.user.js) |
+| 安装脚本 | [awesome-aicue-reader.user.js](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js) |
 | 代码仓库 | [github.com/Qianshuy99/awesome-aicue-reader](https://github.com/Qianshuy99/awesome-aicue-reader) |
 | 反馈问题 | [GitHub Issues](https://github.com/Qianshuy99/awesome-aicue-reader/issues) |
 | 目标站点 | [言灵工坊](https://www.aicue.top/) |

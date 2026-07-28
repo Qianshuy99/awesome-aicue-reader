@@ -26,7 +26,7 @@ screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reade
 ## 安装步骤
 
 1. 在浏览器中安装脚本管理器扩展，并确认扩展已启用。
-2. 打开 [安装脚本](https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js)，脚本管理器会弹出安装确认。
+2. 打开 [安装脚本](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)，脚本管理器会弹出安装确认。
 3. 在确认页面核对脚本名称为 `Awesome AICue Reader`、版本为 `0.1.14`，然后确认安装。
 
 ![脚本管理器的安装确认页面](/screenshots/01-installation-confirm.png)

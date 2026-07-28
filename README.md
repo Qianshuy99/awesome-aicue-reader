@@ -4,7 +4,7 @@
 
 在当前页面打开长帖、跳转楼层、查看上下文、回复与收藏，不必离开原站。
 
-[![安装脚本](https://img.shields.io/badge/Install-Userscript-2f7d5c?style=for-the-badge)](https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js)
+[![安装脚本](https://img.shields.io/badge/Install-Userscript-2f7d5c?style=for-the-badge)](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)
 [![用户手册](https://img.shields.io/badge/Read-Documentation-326f9e?style=for-the-badge)](https://qianshuy99.github.io/awesome-aicue-reader/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-59636d?style=for-the-badge)](LICENSE)
 
@@ -23,7 +23,7 @@
 **需要：** Chromium 或 Firefox 桌面浏览器，以及 Tampermonkey、Violentmonkey 等支持 `GM_xmlhttpRequest` 的脚本管理器。
 
 1. 安装并启用脚本管理器。
-2. 点击 [安装 Awesome AICue Reader](https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js)，在扩展弹窗中确认安装。
+2. 点击 [安装 Awesome AICue Reader](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)，在扩展弹窗中确认安装。
 3. 打开或刷新 [言灵工坊](https://www.aicue.top/)，从讨论列表中的阅读器入口进入。
 
 当前版本：`0.1.14`。脚本已配置自动更新地址；安装这一版后，脚本管理器会按自身的检查策略发现并安装后续版本。详细的浏览器兼容性、权限与更新说明见[安装与更新](docs/getting-started/installation.md)。
