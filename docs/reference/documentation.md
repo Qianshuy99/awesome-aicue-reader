@@ -4,7 +4,7 @@ description: 手册的元数据要求、校验规则，以及截图补齐后需�
 feature_ids: ["REF-002"]
 source_anchors: ["READER_VERSION", "@version"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/14-settings-overview.png"]
@@ -29,7 +29,7 @@ screenshots: ["/screenshots/14-settings-overview.png"]
 
 `title`、`description`、`feature_ids`、`source_anchors`、`since`、`version`、`status`、`last_verified`、`screenshots` 九个字段缺一不可。其中：
 
-- `version` 必须等于脚本 `@version`，当前是 `0.1.13`。改版本号时所有页面和功能目录都要跟着改，否则校验全红。
+- `version` 必须等于脚本 `@version`，当前是 `0.1.14`。改版本号时所有页面和功能目录都要跟着改，否则校验全红。
 - `source_anchors` 里的每个字符串必须能在源码中找到。这是防止文档描述已删除功能的主要手段。
 - `last_verified` 用 `YYYY-MM-DD`，表示这页最后一次对着源码或实际界面核对的日期。
 - `status` 只能是 `current`、`experimental`、`deprecated`。

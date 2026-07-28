@@ -5,7 +5,7 @@ description: 言灵工坊（aicue.top，Flarum）专用增强阅读器的用户�
 feature_ids: ["CORE-001", "CORE-003", "READ-001", "ACTION-001", "DATA-001"]
 source_anchors: ["AICUE_HOSTS", "ldp-native-reader-trigger", "LIST_READER_MODES", "stableStreamMountRange", "ldp-replybtn"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/03-quick-start-workspace.png"]
@@ -46,7 +46,7 @@ features:
 
 <p class="image-caption">阅读工作区在当前页面内打开，宿主列表保持原样。</p>
 
-这套手册对应 userscript `0.1.13`，以 [work/main.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/work/main.js) 当前源码为事实源。脚本只服务言灵工坊一个站点：`aicue.top`、`www.aicue.top`、`flarum.aicue.top`。宿主不是这三个域名时，脚本在业务初始化前直接退出。
+这套手册对应 userscript `0.1.14`，以 [work/main.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/work/main.js) 当前源码为事实源。脚本只服务言灵工坊一个站点：`aicue.top`、`www.aicue.top`、`flarum.aicue.top`。宿主不是这三个域名时，脚本在业务初始化前直接退出。
 
 本项目从上游 [sunbigfly / awesome-linuxdo-reader](https://github.com/sunbigfly/awesome-linuxdo-reader) 移植而来，宿主平台由 Discourse 换成 Flarum。上游手册中关于多站点适配、自定义站点校验和正文翻译的章节不适用于本项目，已从本手册移除。
 

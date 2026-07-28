@@ -4,7 +4,7 @@ description: 言灵工坊单站点适配范围、GM 权限、外部依赖，以�
 feature_ids: ["CORE-001", "CORE-007", "TRANS-001", "REF-001"]
 source_anchors: ["AICUE_HOSTS", "SITE_ADAPTER", "hasDiscourseCapability", "siteAllowsBodyTranslation", "@grant", "@run-at"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/21-compatibility.png"]
@@ -18,7 +18,7 @@ screenshots: ["/screenshots/21-compatibility.png"]
 
 | 项目 | 当前值 |
 | --- | --- |
-| 脚本版本 | `0.1.13` |
+| 脚本版本 | `0.1.14` |
 | 匹配站点 | `aicue.top`、`www.aicue.top`、`flarum.aicue.top` |
 | 平台 | Flarum |
 | 启动时机 | `document-start` |

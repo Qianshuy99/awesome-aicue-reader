@@ -4,7 +4,7 @@ description: 阅读器不出现、内容不加载、样式缺失、限流与卡�
 feature_ids: ["CORE-001", "PERF-002", "PERF-003", "DATA-002"]
 source_anchors: ["AICUE_HOSTS", "REQUEST_PRIORITY", "POST_REQUEST_429_BACKOFF", "CACHE_TYPES"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/20-troubleshooting-429.png"]

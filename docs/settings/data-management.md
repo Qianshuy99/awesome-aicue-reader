@@ -4,7 +4,7 @@ description: 导出与导入阅读器设置，查看并按类型清理当前浏�
 feature_ids: ["DATA-001", "DATA-002"]
 source_anchors: ["readerConfigExportPayload", "ldp-config-export", "CACHE_TYPES", "ldp-cache-clear"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/16-data-management.png", "/screenshots/18-cache-cleanup.png"]

@@ -4,7 +4,7 @@ description: 在浏览器脚本管理器中安装 Awesome AICue Reader，确认�
 feature_ids: ["CORE-001", "REF-001", "REF-002"]
 source_anchors: ["AICUE_HOSTS", "@match", "@grant", "READER_VERSION"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reader-entry.png"]
@@ -26,8 +26,8 @@ screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reade
 ## 安装步骤
 
 1. 在浏览器中安装脚本管理器扩展，并确认扩展已启用。
-2. 打开仓库中的 [dist/awesome-aicue-reader.user.js](https://github.com/Qianshuy99/awesome-aicue-reader/blob/main/dist/awesome-aicue-reader.user.js)，选择 Raw 视图，脚本管理器会弹出安装确认。
-3. 在确认页面核对脚本名称为 `Awesome AICue Reader`、版本为 `0.1.13`，然后确认安装。
+2. 打开 [安装脚本](https://raw.githubusercontent.com/Qianshuy99/awesome-aicue-reader/main/dist/awesome-aicue-reader.user.js)，脚本管理器会弹出安装确认。
+3. 在确认页面核对脚本名称为 `Awesome AICue Reader`、版本为 `0.1.14`，然后确认安装。
 
 ![脚本管理器的安装确认页面](/screenshots/01-installation-confirm.png)
 
@@ -75,6 +75,6 @@ screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reade
 
 ## 更新
 
-脚本未配置 `@updateURL` / `@downloadURL`，脚本管理器不会自动检查更新。需要更新时重新执行一次安装步骤，覆盖安装同名脚本即可。设置保存在脚本管理器的存储中，覆盖安装不会清空。
+脚本已配置 `@updateURL` 与 `@downloadURL`，指向仓库 `main` 分支的发布产物。安装 `0.1.14` 或更新版本后，脚本管理器会按自身策略检查并安装后续版本。设置保存在脚本管理器的存储中，更新安装不会清空。
 
 关于面板底部显示当前运行的版本号，可用于确认更新是否生效。

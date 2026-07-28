@@ -4,7 +4,7 @@ description: 在阅读器内回复、点赞、收藏与复制引用，以及 Fla
 feature_ids: ["ACTION-001", "ACTION-002", "ACTION-003", "ACTION-004", "CORE-007"]
 source_anchors: ["ldp-replybtn", "toggleReaderPostLike", "toggleReaderBookmark", "data-selection-action=\"copy\"", "hasDiscourseCapability"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/04-quick-start-reply.png", "/screenshots/09-nested-context.png"]

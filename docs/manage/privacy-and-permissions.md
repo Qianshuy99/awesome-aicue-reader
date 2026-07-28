@@ -4,7 +4,7 @@ description: 脚本申请的权限、请求去向、本地保存的数据，以�
 feature_ids: ["REF-001", "CORE-005", "TRANS-001"]
 source_anchors: ["@grant", "@run-at", "syncFlarumSession", "siteAllowsBodyTranslation"]
 since: 0.1.13
-version: 0.1.13
+version: 0.1.14
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/19-privacy-request-flow.png"]
