@@ -4,7 +4,7 @@ description: 通知分组、私信入口、浏览历史与收藏列表在阅读�
 feature_ids: ["NOTIFY-001", "ACTION-003", "READ-004", "CORE-005"]
 source_anchors: ["NOTIFICATION_GROUPS", "toggleReaderBookmark", "ldp-history-buttons-always-visible", "syncFlarumSession"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/12-notifications.png", "/screenshots/13-messages.png"]

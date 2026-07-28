@@ -4,7 +4,7 @@ description: 历史导航触发区域、左右按钮常显、帖子打开位置�
 feature_ids: ["READ-004", "READ-005", "READ-006"]
 source_anchors: ["historyEdgeTriggerPercent", "ldp-history-buttons-always-visible", "expandNestedRepliesByDefault", "openTopicsAtFirstPost"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/17-other-features.png"]

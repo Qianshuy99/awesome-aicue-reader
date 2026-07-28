@@ -4,7 +4,7 @@ description: 在浏览器脚本管理器中安装 Awesome AICue Reader，确认�
 feature_ids: ["CORE-001", "REF-001", "REF-002"]
 source_anchors: ["AICUE_HOSTS", "@match", "@grant", "READER_VERSION"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/01-installation-confirm.png", "/screenshots/02-reader-entry.png"]

@@ -5,8 +5,8 @@ import { dirname, join, extname } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-const OLD_VERSION = '0.1.14';
-const NEW_VERSION = '0.1.15';
+const OLD_VERSION = '0.1.15';
+const NEW_VERSION = '0.1.16';
 
 function walk(dir, callback) {
 	if (!existsSync(dir)) return;

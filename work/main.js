@@ -2,7 +2,7 @@
 // @name         Awesome AICue Reader
 // @name:zh-CN   更流畅的言灵工坊阅读器
 // @namespace    https://github.com/Qianshuy99/awesome-aicue-reader
-// @version      0.1.15
+// @version      0.1.16
 // @license      MIT
 // @description  为言灵工坊（Flarum）深度适配的沉浸式增强阅读器，支持长帖上下文、原站互动与个性布局。
 // @description:en An immersive reader deeply adapted for AICue (Flarum), with threaded reading, native interactions, and personalized layouts.
@@ -41,7 +41,7 @@
 	const BASE = location.origin;
 	const PAGE_ROOT = document.documentElement;
 	const makeElement = (tagName) => document.createElement(tagName);
-	const READER_VERSION = '0.1.15';
+	const READER_VERSION = '0.1.16';
 	const HOST_PAGE_WINDOW = globalThis.unsafeWindow;
 	// ---- 言灵工坊（Flarum）站点适配 ----
 	// aicue.top 运行 Flarum，而非 Discourse。阅读器全部 UI/渲染逻辑都基于 Discourse 的
@@ -5430,7 +5430,22 @@
 		console.error('[Awesome AICue Reader] 静态样式资源为空，已停止初始化。');
 		return;
 	}
-	style.textContent = readerStaticStyle;
+	// 静态样式表来自上游固定版本 @resource，无法为 Flarum 增补规则，
+	// 因此宿主列表相关的 Flarum 专属选择器在这里追加。
+	const FLARUM_HOST_STYLE = `
+    .ldp-native-topic-reader-open{display:inline-flex;width:20px;height:20px;box-sizing:border-box;flex:none;
+      align-items:center;justify-content:center;margin-left:5px;padding:2px;border:0;border-radius:50%;
+      vertical-align:middle;background:transparent;color:var(--muted-color,#777);cursor:pointer;
+      opacity:0;transition:opacity .12s ease-out,background .12s ease-out,color .12s ease-out;}
+    .ldp-native-topic-reader-open .ldp-icon{width:13px;height:13px;}
+    .DiscussionListItem:hover .ldp-native-topic-reader-open,
+    .DiscussionListItem:hover .ldp-reader-queue-add,
+    .ldp-native-topic-reader-open:focus-visible,
+    .ldp-reader-queue-add:focus-visible{opacity:1;}
+    .ldp-native-topic-reader-open:hover{background:var(--control-bg,rgba(0,0,0,.06));color:var(--text-color,#222);}
+    @media (hover:none){.ldp-native-topic-reader-open{opacity:1;}}
+`;
+	style.textContent = readerStaticStyle + FLARUM_HOST_STYLE;
 	function ensureReaderStyleMounted() {
 		const target = document.head || PAGE_ROOT;
 		if (!target) return;
@@ -21914,6 +21929,36 @@
 		return counts;
 	}
 
+	// Flarum 列表项没有 Discourse 的 .link-top-line，工具按钮挂在标题链接的容器上。
+	function nativeTopicToolsHost(topicLink) {
+		if (!topicLink) return null;
+		return topicLink.closest('.link-top-line') ||
+			topicLink.closest('.DiscussionListItem-content') ||
+			topicLink.parentElement;
+	}
+
+	function syncNativeTopicReaderOpenButton(card) {
+		if (!card || card.closest('.ldp-overlay')) return;
+		const topicLink = card.querySelector(TOPIC_LINK_SELECTOR);
+		const route = extractTopicRouteFromUrl(topicLink && (topicLink.getAttribute('href') || topicLink.href));
+		const topicId = Number(card.dataset.topicId || card.getAttribute('data-topic-id') || route?.topicId);
+		const host = nativeTopicToolsHost(topicLink);
+		if (!(topicId > 0) || !host) return;
+		let button = host.querySelector(':scope > .ldp-native-topic-reader-open');
+		if (!button) {
+			button = makeElement('button');
+			button.className = 'ldp-native-topic-reader-open';
+			button.type = 'button';
+			button.innerHTML = icon('maximize2');
+			host.appendChild(button);
+		}
+		if (button.dataset.readerOpenTopicId === String(topicId) && button.firstElementChild) return;
+		button.dataset.readerOpenTopicId = String(topicId);
+		const label = '在阅读器中打开';
+		setLabel(button, label);
+		button.setAttribute('title', label);
+	}
+
 	function syncNativeTopicQueueButton(card) {
 		if (!card || card.closest('.ldp-overlay')) return;
 		const topicLink = card.querySelector(
@@ -21921,7 +21966,7 @@
 		);
 		const route = extractTopicRouteFromUrl(topicLink && (topicLink.getAttribute('href') || topicLink.href));
 		const topicId = Number(card.dataset.topicId || card.getAttribute('data-topic-id') || route?.topicId);
-		const line = topicLink && (topicLink.closest('.link-top-line') || topicLink.parentElement);
+		const line = nativeTopicToolsHost(topicLink);
 		if (!(topicId > 0) || !line) return;
 		let button = line.querySelector(':scope > .ldp-reader-queue-add');
 		if (!button) {
@@ -21937,9 +21982,12 @@
 	}
 
 	function retargetMainOutletObserver(observer, currentRoot, rootOptions, onRoot) {
+		// Flarum 没有 #main-outlet / #ember-app，列表容器是 .DiscussionList / #app。
 		const nextRoot = document.querySelector('#main-outlet') ||
 			document.querySelector('.list-container,.topic-list,.latest-topic-list') ||
-			document.querySelector('#ember-app');
+			document.querySelector('.DiscussionList,.IndexPage-results') ||
+			document.querySelector('#ember-app') ||
+			document.querySelector('#app');
 		if (currentRoot === nextRoot && nextRoot?.isConnected) return currentRoot;
 		observer.disconnect();
 		observer.observe(document.body, { childList: true });
@@ -21973,7 +22021,10 @@
 			frame = 0;
 			const cards = [...pendingCards].filter((card) => card.isConnected);
 			pendingCards.clear();
-			cards.forEach(syncNativeTopicQueueButton);
+			cards.forEach((card) => {
+				syncNativeTopicReaderOpenButton(card);
+				syncNativeTopicQueueButton(card);
+			});
 		};
 		const schedule = () => {
 			if (!frame && pendingCards.size) frame = requestAnimationFrame(flush);
@@ -22049,6 +22100,7 @@
 			const dndControl = matchingControl || (fallback && (fallback.closest('a,button,[role="button"]') || fallback));
 			if (dndControl && dndControl.dataset.ldpNativeDnd !== 'true') dndControl.dataset.ldpNativeDnd = 'true';
 			syncNativeTopicTitleTools(card, dndControl);
+			syncNativeTopicReaderOpenButton(card);
 			syncNativeTopicQueueButton(card);
 			syncNativeTopicStatsComponent(card, reactionCounts);
 		});
@@ -22060,6 +22112,7 @@
 		scope.querySelectorAll('.ldp-native-topic-title-tools').forEach((group) => {
 			group.replaceWith(...[...group.childNodes]);
 		});
+		scope.querySelectorAll('.ldp-native-topic-reader-open').forEach((button) => button.remove());
 		scope.querySelectorAll('[data-ldp-native-dnd]').forEach((node) => node.removeAttribute('data-ldp-native-dnd'));
 		scope.querySelectorAll('[data-ldp-native-topic-date]').forEach((node) => node.removeAttribute('data-ldp-native-topic-date'));
 		scope.querySelectorAll('[data-ldp-native-old-topic]').forEach((node) => node.removeAttribute('data-ldp-native-old-topic'));
@@ -37140,8 +37193,40 @@
 		return true;
 	}
 
+	// 列表项上的阅读器入口：手动点击才打开，复用头部入口的侧边栏与路由处理。
+	async function openReaderFromNativeTopicButton(button) {
+		const topicId = Number(button.dataset.readerOpenTopicId);
+		if (!(topicId > 0)) return;
+		const card = button.closest(TOPIC_CARD_SELECTOR);
+		const topicLink = card?.querySelector(TOPIC_LINK_SELECTOR) || null;
+		const route = extractTopicRouteFromUrl(topicLink && (topicLink.getAttribute('href') || topicLink.href));
+		AUTO_OPEN_SUPPRESSED_TOPIC_ID = '';
+		hideNativeReaderTrigger();
+		if (PAGE_ROOT.classList.contains('ldp-reader-sidepanel-active') &&
+				!await closeChromeSidePanelForReader()) {
+			stopDirectTopicTakeover(syncNativeReaderTrigger, String(topicId));
+			return;
+		}
+		const readerQueueMetadata = topicLink ? readerQueueMetadataFromLink(topicLink, topicId) : null;
+		if (readerQueueMetadata)
+			readerQueueMetadata.urlPostNumber = Math.max(0, Number(route?.postNumber) || 0);
+		openModal(topicId, {
+			targetPostNumber: topicUrlReaderStartPostNumber(route),
+			topicNavMetadata: readTopicNavMetadata(topicLink, topicId),
+			...(readerQueueMetadata ? { readerQueueMetadata } : {}),
+		});
+	}
+
 	function handleTopicLinkTrigger(e) {
 		if (e.type === 'click' && e.button && e.button !== 0) return false;
+		const readerOpenButton = eventPathClosest(e, '.ldp-native-topic-reader-open[data-reader-open-topic-id]');
+		if (readerOpenButton) {
+			consumeEvent(e);
+			void openReaderFromNativeTopicButton(readerOpenButton).catch((error) => {
+				console.warn('[LDP] native reader open failed', error);
+			});
+			return true;
+		}
 		const queueButton = eventPathClosest(e, '.ldp-reader-queue-add[data-reader-queue-topic-id]');
 		if (queueButton) {
 			consumeEvent(e);
@@ -37187,6 +37272,15 @@
 		if (shouldBypassReaderUrl(a.href)) return false;
 		const route = extractTopicRouteFromUrl(a.getAttribute('href') || a.href);
 		if (!route) return false;
+		// 宿主列表里的帖子链接恢复原生跳转，改由列表项上的阅读器入口按钮手动打开。
+		// 阅读器内部链接、通知链接，以及左右嵌入形态下的宿主列表仍由阅读器接管。
+		if (!notificationItem && a.getRootNode() !== READER_PORTAL_ROOT && !a.closest('.ldp-overlay') &&
+				!PAGE_ROOT.classList.contains('ldp-reader-workspace')) {
+			// Flarum 是 SPA：原生跳转走 pushState，会触发路由接管并把阅读器重新打开。
+			// 标记该帖跳过自动接管，直达访问（首次加载）的自动打开不受影响。
+			AUTO_OPEN_SUPPRESSED_TOPIC_ID = String(route.topicId);
+			return false;
+		}
 		const readerQueueMetadata = readerQueueMetadataFromLink(a, route.topicId);
 		readerQueueMetadata.urlPostNumber = Math.max(0, Number(route.postNumber) || 0);
 		const hostTopicPointerAnchor = captureHostTopicPointerAnchor(e, route.topicId);

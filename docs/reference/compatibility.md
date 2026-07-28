@@ -4,7 +4,7 @@ description: 言灵工坊单站点适配范围、GM 权限、外部依赖，以�
 feature_ids: ["CORE-001", "CORE-007", "TRANS-001", "REF-001"]
 source_anchors: ["AICUE_HOSTS", "SITE_ADAPTER", "hasDiscourseCapability", "siteAllowsBodyTranslation", "@grant", "@run-at"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/21-compatibility.png"]

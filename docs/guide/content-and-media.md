@@ -4,7 +4,7 @@ description: 图片灯箱与批量下载、音视频与 HLS 播放、KaTeX 公�
 feature_ids: ["MEDIA-001", "MEDIA-002", "MEDIA-003", "MEDIA-004", "MEDIA-005"]
 source_anchors: ["ldp-lb-stage", "ldp-lb-batch-dialog", "katex", "Hls", "renderReaderPoll"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/10-lightbox.png", "/screenshots/11-batch-download.png"]

@@ -4,7 +4,7 @@ description: 13 个设置面板的职责划分，以及性能、请求与资源�
 feature_ids: ["SET-001", "PERF-001", "PERF-002", "READ-001"]
 source_anchors: ["SETTINGS_PANEL_META", "PERFORMANCE_PRESETS", "REQUEST_PRIORITY", "stableStreamMountRange"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/14-settings-overview.png", "/screenshots/15-performance-settings.png"]

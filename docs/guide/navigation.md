@@ -4,7 +4,7 @@ description: 时间轴跳转、只看楼主、浏览历史前后切换，以及�
 feature_ids: ["READ-002", "READ-003", "READ-004", "READ-005", "CORE-006"]
 source_anchors: ["ldp-topic-timeline-track", "ldp-only-op-toggle", "ldp-history-buttons-always-visible", "expandNestedRepliesByDefault", "flarumPageUrl"]
 since: 0.1.13
-version: 0.1.15
+version: 0.1.16
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/07-timeline.png", "/screenshots/08-op-only.png", "/screenshots/09-nested-context.png"]
