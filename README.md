@@ -26,7 +26,7 @@
 2. 点击 [安装 Awesome AICue Reader](https://cdn.jsdelivr.net/gh/Qianshuy99/awesome-aicue-reader@main/dist/awesome-aicue-reader.user.js)，在扩展弹窗中确认安装
 3. 打开或刷新 [言灵工坊](https://www.aicue.top/)，从讨论列表中的阅读器入口进入
 
-当前版本：`0.1.14`。脚本已配置自动更新地址，安装后脚本管理器会按自身策略发现并安装后续版本。详见[安装与更新](docs/getting-started/installation.md)。
+当前版本：`0.1.15`。脚本已配置自动更新地址，安装后脚本管理器会按自身策略发现并安装后续版本。详见[安装与更新](docs/getting-started/installation.md)。
 
 ![讨论列表中的阅读器入口](assets/screenshots/02-reader-entry.png)
 

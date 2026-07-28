@@ -4,7 +4,7 @@ description: 阅读器在本地保存哪些数据、保存在哪里、如何备�
 feature_ids: ["DATA-001", "DATA-002", "DATA-003"]
 source_anchors: ["readerConfigExportPayload", "CACHE_TYPES", "LDP_RESPONSE_CACHE_STORE"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/18-cache-cleanup.png"]

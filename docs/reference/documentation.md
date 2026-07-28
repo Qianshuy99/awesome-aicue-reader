@@ -4,7 +4,7 @@ description: 手册的元数据要求、校验规则，以及截图补齐后需�
 feature_ids: ["REF-002"]
 source_anchors: ["READER_VERSION", "@version"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/14-settings-overview.png"]

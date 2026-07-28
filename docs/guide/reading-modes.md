@@ -4,7 +4,7 @@ description: 浮窗、全屏与左右嵌入四种显示形态的差异，以及�
 feature_ids: ["CORE-002", "CORE-003", "CORE-004", "READ-001", "PERF-001"]
 source_anchors: ["ldp-native-reader-trigger", "LIST_READER_MODES", "TOPIC_READER_MODES", "stableStreamMountRange", "PERFORMANCE_PRESETS"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/05-reading-modes.png", "/screenshots/06-workspace-regions.png"]

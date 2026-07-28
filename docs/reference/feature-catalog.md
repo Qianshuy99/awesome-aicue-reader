@@ -4,7 +4,7 @@ description: 33 项功能的分类、源码锚点与对应文档，由 docs/publ
 feature_ids: ["SET-001", "REF-002"]
 source_anchors: ["SETTINGS_PANEL_META", "READER_VERSION"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/22-feature-catalog.png"]

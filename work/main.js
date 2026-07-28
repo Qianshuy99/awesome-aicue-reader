@@ -2,7 +2,7 @@
 // @name         Awesome AICue Reader
 // @name:zh-CN   更流畅的言灵工坊阅读器
 // @namespace    https://github.com/Qianshuy99/awesome-aicue-reader
-// @version      0.1.14
+// @version      0.1.15
 // @license      MIT
 // @description  为言灵工坊（Flarum）深度适配的沉浸式增强阅读器，支持长帖上下文、原站互动与个性布局。
 // @description:en An immersive reader deeply adapted for AICue (Flarum), with threaded reading, native interactions, and personalized layouts.
@@ -41,7 +41,7 @@
 	const BASE = location.origin;
 	const PAGE_ROOT = document.documentElement;
 	const makeElement = (tagName) => document.createElement(tagName);
-	const READER_VERSION = '0.1.14';
+	const READER_VERSION = '0.1.15';
 	const HOST_PAGE_WINDOW = globalThis.unsafeWindow;
 	// ---- 言灵工坊（Flarum）站点适配 ----
 	// aicue.top 运行 Flarum，而非 Discourse。阅读器全部 UI/渲染逻辑都基于 Discourse 的
@@ -20213,6 +20213,10 @@
 	}
 
 	async function fetchUserProfileDetails(username, options = {}) {
+		if (IS_FLARUM_SITE) {
+			const data = await flarumFetchUser(username);
+			return data?.user || null;
+		}
 		const User = lookupDiscourseModule('discourse/models/user')?.default;
 		if (!User || !isFunction(User.findByUsername)) {
 			throw new Error('Discourse 用户模型尚未就绪');

@@ -4,7 +4,7 @@ description: 从讨论列表打开阅读器，切换显示形态，浏览楼层�
 feature_ids: ["CORE-002", "CORE-003", "READ-002", "ACTION-001"]
 source_anchors: ["ldp-native-reader-trigger", "LIST_READER_MODES", "ldp-topic-timeline-track", "ldp-replybtn"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/03-quick-start-workspace.png", "/screenshots/04-quick-start-reply.png"]

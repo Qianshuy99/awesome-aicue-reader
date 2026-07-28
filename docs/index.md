@@ -5,7 +5,7 @@ description: 言灵工坊（aicue.top，Flarum）专用增强阅读器的用户�
 feature_ids: ["CORE-001", "CORE-003", "READ-001", "ACTION-001", "DATA-001"]
 source_anchors: ["AICUE_HOSTS", "ldp-native-reader-trigger", "LIST_READER_MODES", "stableStreamMountRange", "ldp-replybtn"]
 since: 0.1.13
-version: 0.1.14
+version: 0.1.15
 status: current
 last_verified: 2026-07-27
 screenshots: ["/screenshots/03-quick-start-workspace.png"]
